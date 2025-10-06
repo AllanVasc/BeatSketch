@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BeatSketch — Tone.js</title>
+  <style>
+    :root{--gap:8px}
+    body{font-family:system-ui,Segoe UI,Roboto,Arial;margin:0;padding:16px}
+    h1{margin:0 0 12px}
+    .controls{display:flex;gap:var(--gap);flex-wrap:wrap;margin:12px 0}
+    .controls>*{padding:8px 10px;border:1px solid #ddd;border-radius:10px;font-size:14px}
+    button{cursor:pointer}
+    .grid{display:grid;grid-template-columns:120px repeat(16,1fr);gap:var(--gap)}
+    .rowlabel{display:flex;align-items:center;font-weight:600}
+    .cell{aspect-ratio:1/1;border:1px solid #ddd;border-radius:8px;display:flex;align-items:center;justify-content:center;user-select:none}
+    .cell.active{background:#111;color:#fff}
+    .cell.playhead{outline:3px solid #7abaff}
+    .footer{margin-top:12px;font-size:12px;opacity:.7}
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.min.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <h1>BeatSketch — sequenciador 16 passos</h1>
+
+  <div class="controls">
+    <button id="startStop">▶️ Iniciar</button>
+    <label>BPM <input id="bpm" type="range" min="60" max="180" value="110"></label>
+    <label>Swing <input id="swing" type="range" min="0" max="100" value="0"></label>
+    <button id="clear">🧹 Limpar</button>
+    <button id="export">⬇️ Exportar JSON</button>
+    <input id="importFile" type="file" accept="application/json">
+  </div>
+
+  <div id="grid" class="grid"></div>
+
+  <p class="footer">Trilhas: Kick • Snare • Clap • Hihat | Clique nas células para ativar/desativar.</p>
+</body>
+</html>
+
